@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getAuthCookie, getDecodedToken } from "./helpers/auth";
+import { baseURL } from "./constant/statics";
 
 export const runtime = "nodejs";
 
@@ -16,14 +17,11 @@ export async function middleware(req: Request) {
   );
 
   const requestOrigin = req.headers.get("origin");
-  // const allowedOrigins = [
-  //   "http://localhost:3000",
-  //   "https://lexel-blog.vercel.app",
-  // ];
+  const allowedOrigins = [baseURL];
 
-  // if (requestOrigin && !allowedOrigins.includes(requestOrigin)) {
-  //   return new NextResponse("CORS policy violation", { status: 403 });
-  // }
+  if (requestOrigin && !allowedOrigins.includes(requestOrigin)) {
+    return new NextResponse("CORS policy violation", { status: 403 });
+  }
 
   const token = await getAuthCookie();
 

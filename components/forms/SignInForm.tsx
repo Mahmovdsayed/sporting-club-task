@@ -76,7 +76,7 @@ const SignInForm = () => {
                                 </Alert>}
                             </Field>
                             <Field>
-                                <Button disabled={loading} type="submit">{loading ? "Creating..." : "Create Account"}</Button>
+                                <Button disabled={loading} type="submit">{loading ? "Signing In..." : "Sign In"}</Button>
                             </Field>
                             <FieldDescription className="text-center">
                                 Don&apos;t have an account? <Link href="/auth/signup">Sign up</Link> here.
