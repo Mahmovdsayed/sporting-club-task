@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## 🏋️‍♂️ Sporting Club Task
 
-## Getting Started
+A modern web dashboard built with **Next.js**, **TypeScript**, and **MongoDB**, designed to manage **club members**, **sports**, and **subscriptions** with ease.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+**Test Credentials**: You can use the following account to test the application without signing up, or create your own account:
+**Email**: `test@test.com`
+**Password**: `Test@123`
+
+---
+
+### 🚀 Features
+
+- 👥 **Member Management** — Add, view, and organize members efficiently.
+- 🏀 **Sports Management** — Create and manage sports categories.
+- 🎫 **Subscription System** — Subscribe members to multiple sports with validation.
+- 🧠 **Smart Validation** — Built with `Zod` and `React Hook Form` for robust forms.
+- 💾 **MongoDB Integration** — Persistent storage for members, sports, and subscriptions.
+- 🔐 **Authentication** — Secure user access using JWT cookies.
+- 🌓 **Dark/Light Theme** — Toggle theme directly from the dashboard.
+- ⚡ **Optimized Performance** — SSR-ready with Next.js App Router.
+
+---
+
+### 🛠️ Tech Stack
+
+| Category         | Technology                              |
+| ---------------- | --------------------------------------- |
+| Frontend         | Next.js (App Router), React, TypeScript |
+| Backend          | Node.js, Next.js API Routes             |
+| Database         | MongoDB, Mongoose                       |
+| UI Library       | Shadcn/UI, Tailwind CSS                 |
+| Validation       | Zod, React Hook Form                    |
+| State Management | React Query                             |
+| Authentication   | JWT with HttpOnly cookies               |
+| Deployment       | Vercel                                  |
+
+---
+
+### 🧩 Folder Structure
+
+```
+src/
+├── app/                     # Next.js routes and pages
+├── components/              # UI components (Cards, Tables, etc.)
+├── models/                  # Mongoose models (Members, Sports, Subscriptions)
+├── validations/             # Zod schemas for validation
+├── hooks/                   # Custom hooks (useFormHandler, etc.)
+├── lib/                     # Database connection, utilities
+├── helpers/                 # Auth, JSON response helpers
+└── types/                   # TypeScript type definitions
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 🧱 API Endpoints Overview
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Endpoint                       | Method | Description                      |
+| ------------------------------ | ------ | -------------------------------- |
+| `/api/signin`                  | POST   | User login                       |
+| `/api/signup`                  | POST   | User registration                |
+| `/api/dashboard/members`       | CRUD   | Add, update, delete, get members |
+| `/api/dashboard/sports`        | CRUD   | Add, update, delete, get sports  |
+| `/api/dashboard/subscriptions` | CRUD   | Add, delete, get subscriptions   |
+| `/api/dashboard/user`          | GET    | Fetch logged-in user info        |
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+### 🖼️ Open Graph & SEO
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Metadata is configured in `app/layout.tsx` using Next.js **Metadata API**, including Open Graph and Twitter cards.
+The main OG image: `/opengraph-image.png`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+### 🧑‍💻 Author
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Mahmoud Sayed**
+Full-Stack Developer
+📧 [mahmoudsayed3576@gmail.com](mailto:mahmoudsayed3576@gmail.com)
+🌐 [My Website](https://www.mahmoud.life/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+### 📜 License
+
+This project is licensed under the **MIT License** — you’re free to use, modify, and distribute it.
