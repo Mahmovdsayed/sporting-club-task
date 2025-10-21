@@ -4,6 +4,8 @@ A modern web dashboard built with **Next.js**, **TypeScript**, and **MongoDB**, 
 
 ---
 
+![alt text](https://res.cloudinary.com/dtpsyi5am/image/upload/v1761027806/Screenshot_2025-10-21_at_9.20.35_AM_bfi6ei.png)
+
 **Test Credentials**: You can use the following account to test the application without signing up, or create your own account:
 **Email**: `test@test.com`
 **Password**: `Test@123`
