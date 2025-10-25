@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getAuthCookie, getDecodedToken } from "./helpers/auth";
+import jwt from "jsonwebtoken";
 import { baseURL } from "./constant/statics";
 
 export const runtime = "nodejs";
@@ -16,36 +16,35 @@ export async function middleware(req: Request) {
     "max-age=63072000; includeSubDomains; preload"
   );
 
-  const requestOrigin = req.headers.get("origin");
+  const cookieHeader = req.headers.get("cookie") || "";
+  const tokenMatch = cookieHeader.match(/token=([^;]+)/);
+  const token = tokenMatch ? tokenMatch[1] : null;
+
   const allowedOrigins = [baseURL];
+  const requestOrigin = req.headers.get("origin");
 
   if (requestOrigin && !allowedOrigins.includes(requestOrigin)) {
     return new NextResponse("CORS policy violation", { status: 403 });
   }
 
-  const token = await getAuthCookie();
-
-  if (!token) {
-    if (pathname.startsWith("/dashboard")) {
+  if (pathname.startsWith("/dashboard")) {
+    if (!token) {
       return NextResponse.redirect(`${origin}/auth/signin`);
     }
-    return response;
-  }
 
-  const decodedToken = await getDecodedToken();
-
-  if (!decodedToken) {
-    if (pathname.startsWith("/dashboard")) {
+    try {
+      jwt.verify(token, process.env.JWT_SECRET || "");
+    } catch {
       return NextResponse.redirect(`${origin}/auth/signin`);
     }
-    return response;
   }
 
-  if (
-    (pathname === "/auth/signin" || pathname === "/auth/signup") &&
-    decodedToken
-  ) {
-    return NextResponse.redirect(`${origin}/dashboard`);
+  if ((pathname === "/auth/signin" || pathname === "/auth/signup") && token) {
+    try {
+      jwt.verify(token, process.env.JWT_SECRET || "");
+      return NextResponse.redirect(`${origin}/dashboard`);
+    } catch {
+    }
   }
 
   return response;
