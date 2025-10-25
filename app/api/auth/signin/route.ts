@@ -32,7 +32,7 @@ export async function POST(req: Request) {
       }
     );
 
-    (await cookies()).set("userToken", token, {
+    (await cookies()).set("token", token, {
       secure: process.env.NODE_ENV === "production",
       sameSite: "lax",
       httpOnly: true,
