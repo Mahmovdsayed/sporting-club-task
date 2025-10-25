@@ -14,6 +14,7 @@ import { Alert, AlertTitle } from "../ui/alert"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { loginSchema } from "@/validation/signInSchema"
+import { ConfettiFireworks } from "@/functions/ConfettiFireworks"
 
 const SignInForm = () => {
     const router = useRouter();
@@ -22,7 +23,10 @@ const SignInForm = () => {
         endpoint: "/api/auth/signin",
         method: "post",
         onSuccess: () => {
-            router.push("/dashboard");
+            ConfettiFireworks()
+            setTimeout(() => {
+                router.push("/dashboard");
+            }, 1000);
         }
     });
     return <>
