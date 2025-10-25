@@ -56,4 +56,3 @@ export async function getAuthCookie() {
   const cookieStore = await cookies();
   return cookieStore.get("token")?.value;
 }
-    
